@@ -1,0 +1,4 @@
+{$DOMAIN} {
+	reverse_proxy frame:8787
+	encode gzip
+}

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-hairline;
+  }
+  ::selection {
+    @apply bg-safelight text-base;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.lumen");
+    outline-offset: 2px;
+  }
+}
+
+/* Sprocket-hole rail, used along the edges of the film-frame card */
+.sprocket-rail {
+  background-image: radial-gradient(circle, theme("colors.hairline") 2.5px, transparent 2.5px);
+  background-size: 100% 18px;
+  background-position: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: fade-in 0.35s ease-out both;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

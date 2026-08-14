@@ -1,0 +1,30 @@
+services:
+  frame:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      # Optional: drop your exported cookies.txt next to this file to enable
+      # stories/private content. Comment out if you don't need it.
+      - ./cookies.txt:/app/backend/cookies.txt:ro
+    expose:
+      - "8787"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - DOMAIN=${DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - frame
+
+volumes:
+  caddy_data:
+  caddy_config:
