@@ -25,7 +25,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:8787",
+        target: "https://frame-backend.railway.app",
         changeOrigin: true,
       },
     },
