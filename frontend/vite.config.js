@@ -25,12 +25,4 @@ export default defineConfig({
   build: {
     minify: false,
   },
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://frame-backend.railway.app",
-        changeOrigin: true,
-      },
-    },
-  },
 });
